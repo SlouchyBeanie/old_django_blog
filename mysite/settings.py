@@ -51,6 +51,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'brady.anderson27@gmail.com'
+EMAIL_HOST_PASSWORD = 'soker007'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
