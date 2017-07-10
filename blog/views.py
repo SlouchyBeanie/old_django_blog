@@ -51,6 +51,7 @@ def post_share(request, post_id):
 	#Retrieve post by id
 	post = get_object_or_404(Post, id=post_id, status='published')
 	sent = False
+	receiver = ''
 
 	if request.method == "POST":
 		# Form was submitted
@@ -64,6 +65,7 @@ def post_share(request, post_id):
 			message = 'Read "{}" at {}\n\n{}\'s comments: {}'.format(post.title, post_url, cd['name'], cd['comments'])
 			send_mail(subject, message, 'brady.anderson28@gmail.com', [cd['to']])
 			sent = True
+			receiver = cd['to']
 	else:
 		form = EmailPostForm()
 
@@ -71,6 +73,7 @@ def post_share(request, post_id):
 		'post': post,
 		'form': form,
 		'sent': sent,
+		'receiver': receiver,
 	}
 	
 	return render(request, 'blog/post/share.html', context)
