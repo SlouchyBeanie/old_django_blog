@@ -1,4 +1,5 @@
- {% extends "blog/base.html" %}
+{% extends "blog/base.html" %}
+{% load blog_tags %}
 
  {% block title %}{{ post.title }}{% endblock %}
 
@@ -18,7 +19,7 @@
 	{% endif %}
  	
 
- 	{{ post.body|linebreaks}}
+ 	{{ post.body|markdown}}
 
 
  	<p>
